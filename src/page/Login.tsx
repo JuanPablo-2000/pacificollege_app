@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "../styles/styles.css";
 
-import logo from "../assets/img/LOGO.ico";
+import logo from "../assets/img/logo.ico";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Logger from "../interfaces/Logger";
 import UserServices from "../services/UserServices";
