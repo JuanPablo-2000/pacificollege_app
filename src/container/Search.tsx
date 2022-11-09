@@ -1,5 +1,5 @@
 import "../styles/Search.css";
-import imgSearch from "../assets/img/lupa.png";
+import imgSearch from "../static/img/lupa.png";
 import { useState } from "react";
 
 // Interfaces

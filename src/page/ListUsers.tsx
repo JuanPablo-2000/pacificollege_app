@@ -5,9 +5,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import UserServices from "../services/UserServices";
 
-import closeSession from "../assets/img/iniciar-sesion.png";
-import plusSign from "../assets/img/plus-sign.png";
-import downloadFile from "../assets/img/abrir-caja.png";
+import closeSession from "../static/img/iniciar-sesion.png";
+import plusSign from "../static/img/plus-sign.png";
+import downloadFile from "../static/img/abrir-caja.png";
 
 import "../styles/styles.css";
 import ModalUser from "../container/ModalUser";
