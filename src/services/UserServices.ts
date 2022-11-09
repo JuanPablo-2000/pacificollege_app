@@ -32,7 +32,8 @@ export default class UserServices {
                     headers: {
                         "Content-type":
                             "application/json;"
-                    }
+                    },
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -46,7 +47,8 @@ export default class UserServices {
         return new Promise(async (resolve, reject) => {
             try {
                 const response = await fetch(`${this.#domain}/page/${page}/10`, {
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -60,7 +62,8 @@ export default class UserServices {
         return new Promise(async (resolve, reject) => {
             try {
                 const response = await fetch(`${this.#domain}/late/students/${page}/10`, {
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -76,7 +79,8 @@ export default class UserServices {
                 const response = await fetch(`${this.#domain}/export`, {
                     method: "POST",
                     body: JSON.stringify(filter),
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const blob = await response.blob(); // Archivos de datos en byte[] "blob"
                 const url = window.URL.createObjectURL(blob);
@@ -104,7 +108,8 @@ export default class UserServices {
                 const response = await fetch(`${this.#domain}/filtro?pageNo=${page}`, {
                     method: "POST",
                     body: JSON.stringify(filter),
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -120,7 +125,8 @@ export default class UserServices {
                 const response = await fetch(`${this.#domain}/create`, {
                     method: "POST",
                     body: JSON.stringify(body),
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -136,7 +142,8 @@ export default class UserServices {
                 const response = await fetch(`${this.#domain}/update/${id}`, {
                     method: "PATCH",
                     body: JSON.stringify(body),
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
@@ -151,7 +158,8 @@ export default class UserServices {
             try {
                 const response = await fetch(`${this.#domain}/delete/${id}`, {
                     method: "DELETE",
-                    headers: this.headers()
+                    headers: this.headers(),
+                    referrerPolicy: "strict-origin-when-cross-origin"
                 });
                 const json = await response.json();
                 resolve(json);
