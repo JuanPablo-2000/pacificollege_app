@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+body .active-modal {
+    position: absolute;
+    z-index: 10;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 2;
+}
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49,49,49,0.8);
+}
+.modal-content-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: whitesmoke;
+    padding: 14px 28px;
+    margin: 0 auto;
+    border-radius: 20px;
+    /* width: 92%; */
+    height: 60%;
+    overflow: auto;
+    z-index: 2;
+}
+.close-modal {
+    position: absolute;
+    left: 92%;
+    top: -1%;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    color: #063A47;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor: pointer;
+
+    display: flex;
+    justify-items: center;
+    z-index: 3;
+}
+.close-modal > h3 {
+    margin: 8px 0px 0px 14px;
+    padding: 0;
+}
+.close-modal:hover {
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
+.modal-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .5em;
+    margin-top: 1em;
+    height: 80%;
+}
+.display-grid-form {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: .5em;
+
+}
+.modal-content::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+}
+.modal-content-home::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+}
+.title-modal-home {
+    font-family: 'Indie Flower';
+    justify-self: center;
+    font-weight: bolder;
+    font-size: 2rem;
+    grid-row: 1;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+}
+.buttons-crud {
+    margin: 1.5rem;
+    width: 28rem;
+    position: absolute;
+    right: 2rem;
+    top: 55rem;
+}
+.buttons-crud > button {
+    margin: 2rem;
+}
+.create-button {
+    /* position: relative;
+    bottom: 6.5em;
+    right: 32em; */
+    background: #910B1F !important;
+    width: 7rem;
+}
+.create-button:hover {
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
+.update-button {
+    /* position: relative;
+    bottom: 6.5em;
+    right: 40em; */
+    background: #063A47 !important;
+    width: 7rem;
+}
+.update-button:hover {
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
+.delete-button {
+    /* position: relative;
+    bottom: 6.5em;
+    right: 38em; */
+    background: red !important;
+    width: 7rem;
+}
+.delete-button:hover {
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
+.input-type-date {
+    width: initial !important;
+}
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    width: 100%;
+    border-radius: 20px !important;
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+    line-height: 0.4375em !important;
+    font-size: .9rem !important;
+    overflow: unset !important;
+}
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+    font-size: .9rem !important;
+}
+.css-1pysi21-MuiFormLabel-root-MuiInputLabel-root {
+    font-size: .9rem !important;
+}
+.MuiFormControl-root {
+    width: 10em;
+}
+.MuiInputBase-root {
+    font-size: .9rem !important;
+}
+.MuiFormLabel-root {
+    font-size: .9rem !important;
+}
+.size-dates {
+    width: 8.6rem !important;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+}
+.size-info-student {
+    height: 460px !important;
+}
+.size-info-titular {
+    height: 350px !important;
+    width: 600px !important;
+    position: relative;
+    top: 1.8em;
+    margin: 0 auto;
+}

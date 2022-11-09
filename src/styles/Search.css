@@ -1,0 +1,49 @@
+.search {
+    width: 20rem;
+    height: 1.99rem;
+    display: inline-block;
+
+    border-radius: .5rem;
+    border: 3px solid #910B1F;
+    outline-style: none;
+    box-shadow: none;
+    padding-left: 10px;
+}
+.lens {
+    border: none;
+    background: #910B1F;
+    display: inline-block;
+    position: absolute;
+
+    width: 2.4rem;
+    height: 2.3rem;
+    border-radius: .5rem;
+
+    background-repeat: no-repeat;
+}
+.lens button img {
+    position: absolute;
+    top: .2rem;
+}
+.sheet-img {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    height: 30px;
+    width: 30px;
+    background: #910b1f;
+    border-radius: 50%;
+    padding: 15px;
+}
+.position-search {
+    position: absolute;
+    right: calc(50% - 360px);
+    width: fit-content;
+    top: 7rem;
+    left: 2.5rem;
+}
+.position-search img {
+    position: relative;
+    right: 2rem;
+    top: 0.4rem;
+}

@@ -1,0 +1,59 @@
+.margin-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  margin: 12rem 2rem 1rem 2rem;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px;
+  background: transparent;
+  border-radius: 15px;
+
+  cursor: pointer;
+}
+.card::after {
+  content: "";
+  transform: rotate(-30deg);
+  position: absolute;
+  top: 17px;
+  left: -50px;
+  width: 100%;
+  height: 10px;
+  border: 4px solid #06698c;
+  background: #06698c;
+}
+.card::before {
+  content: "";
+  transform: rotate(-30deg);
+  position: absolute;
+  top: 0;
+  left: -57px;
+  width: 100%;
+  height: 10px;
+  border: 4px solid #910B1F;
+  background: #910B1F;
+}
+.description {
+  width: 100%;
+  height: 16rem;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding: .5rem;
+  position: relative;
+  top: 2rem;
+}
+.description p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    
+}
+.position-visa {
+  position: relative;
+  left: 38%;
+  bottom: 14%;
+  font-size: 22px;
+  font-weight: bolder;
+}

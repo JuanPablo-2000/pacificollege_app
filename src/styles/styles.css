@@ -1,0 +1,205 @@
+/*
+Arquitectura de Css
+1. Posicionamiento
+2. Modelo de caja (Box Model)
+3. Tipografía
+4. Visuales
+5. Otros
+*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;500&family=Quicksand:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+* {
+    font-family: 'DM Sans';
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+:root {
+    /*Variables de color*/
+    --brown-logo-pacific: #910B1F;
+    --blue-logo-pacific: #063A47;
+    --light-blue-pacific: #2F4858;
+}
+.nav-bar {
+    height: 12%;
+    width: 100%;
+    background-color: var(--light-blue-pacific);
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+}
+.cover::before {
+    content: "";
+    position: absolute;
+    height: 1400px;
+    width: 1600px;
+    top: -10%;
+    right: 48%;
+    animation: fadeInBefore 1.3s ease-in forwards;
+    background-image: linear-gradient(-45deg, #941021 0%, #910B1F 100%);
+    transition: 3s ease-in-out;
+    border-radius: 70%;
+    z-index: 6;
+}
+
+.cover::after {
+    content: "";
+    position: absolute;
+    height: 1400px;
+    width: 1600px;
+    top: -10%;
+    right: 48%;
+    transform: translate(0%, -50%);
+    background-image: linear-gradient(-45deg, #007088 0%, #007088 100%);
+    animation: fadeInAfter 1s normal;
+    transition: transform 1s ease-in;
+    border-radius: 70%;
+    z-index: 1;
+}
+.logger {
+    width: 20%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    
+}
+.logger form {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+}
+.page-firsth {
+    width: 98vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+}
+.logger form input {
+    font-size: 16px;
+    display: block;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    width: 300px;
+    height: 30px;
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 1px solid var(--blue-logo-pacific);
+    outline-style: none;
+    box-shadow: none;
+}
+.logger form input:hover {
+    background-color: transparent !important;
+}
+.logger form button {
+    margin: 1rem;
+    height: 40px;
+    border-radius: 2rem 2rem 2rem 2rem;
+    background-color: var(--brown-logo-pacific);
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: 0;
+}
+.logger img {
+    margin: 0 auto;
+}
+@keyframes fadeInAfter {
+    from {
+        transform: translate(-14%, -50%);
+    }
+    to {
+        transform: translate(0%, -50%);
+    }
+}
+@keyframes fadeInBefore {
+    from {
+        transform: translate(-25%, -60%);
+    }
+    to {
+        transform: translate(0%, -60%);
+    }
+}
+.nav-bar {
+    position: fixed;
+    display: grid;
+    width: 100%;
+    height: 80px;
+    background-color: var(--brown-logo-pacific);
+    z-index: 5;
+}
+.home {
+    color: snow;
+    margin-left: 2rem;
+    font-family: 'Indie Flower';
+    font-size: 30px;
+    text-align: initial;
+}
+.options {
+    display: -webkit-inline-box;
+    position: absolute;
+    right: 68%;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: .4fr .3fr .3fr .4fr;
+    grid-gap: 5px;
+    text-align: center;
+}
+.grid-container h2 {
+    font-family: 'Indie Flower';
+    font-size: 20;
+    color: snow;
+    cursor: pointer;
+}
+.add-user {
+    color: snow;
+    font-family: 'Indie Flower';
+    font-size: 20px;
+    cursor: pointer;
+}
+.close-session {
+    margin: 1rem 3rem 0rem 0rem;
+    text-align: end;
+    cursor: pointer;
+}
+.filter-search {
+    position: relative;
+    top: 3rem;
+    left: calc(50% - 165px);
+    width: 320px;
+}
+.position-filter {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 33rem;
+}
+.select-drop {
+    color: grey;
+    width: 120px;
+    height: 2.4rem;
+    margin: 0;
+    margin-right: 1rem;
+    padding: 0;
+
+    border-radius: 6px;
+    border: 2px solid #910B1F;
+}
+.select-drop:focus {
+    border-color: #910B1F !important;
+    outline-color: #910B1F;
+}
+.loader {
+    margin: 0% 0% 1% 50%;
+}
+.efecto-hover:hover {
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
