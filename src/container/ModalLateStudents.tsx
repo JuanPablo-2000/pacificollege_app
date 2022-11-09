@@ -117,6 +117,7 @@ export const ModalLateStudents = ({
           handleOnSubmit={modalFuntion}
           register={userSelected}
           idUserSelect={selectUser}
+          refreshInfo={() => {}}
         />
       )}
     </>
