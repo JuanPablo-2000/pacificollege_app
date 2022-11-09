@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  BrowserRouter,
+  useNavigate,
+} from "react-router-dom";
 import { AppContext } from "../context/UserContext";
 import ListUsers from "../page/ListUsers";
 import Login from "../page/Login";
@@ -9,12 +14,18 @@ const Main = () => {
   const [user, setUser] = useState();
   const [mounted, setMounted] = useState(false);
 
+  // const navigate = useNavigate();
+
   useEffect(() => {
     let userCurrent: any = localStorage.getItem("user_token");
 
     if (userCurrent) {
       userCurrent = JSON.parse(userCurrent);
       setUser(userCurrent);
+
+      // navigate("/listUsers");
+    } else {
+      // navigate("/login");
     }
 
     setMounted(true);
@@ -26,6 +37,7 @@ const Main = () => {
         <AppContext.Provider value={{ user, setUser }}>
           <BrowserRouter>
             <Routes>
+              <Route path="" element={<Login />} />
               <Route path="/login" element={<Login />}></Route>
               <Route
                 element={
