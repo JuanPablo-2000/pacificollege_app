@@ -38,18 +38,6 @@ const ListUsers = () => {
   const [selectUser, setSelectUser] = useState();
 
   const modalFuntion: SubmitHandler<ForModalUser> = (data) => {
-    /**
-     * Aqui se debe de implementar el create, update & delete para poder 
-     * renderizar los elementos de las card y tener la comunicacion entre padre he hijo
-     */
-    if (userSelected) {
-      console.log("update");
-      // console.log(userSelected.estado);
-      // console.log(data.State);
-    } else {
-      console.log("create");
-    }
-    // console.log(userSelected + "ListUsers");
   };
 
   const refreshUsers = (userRefresh: User, typeAction: string) => {

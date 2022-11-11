@@ -19,7 +19,9 @@ export default class UserServices {
 
         return {
             "Content-type": "application/json",
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`,
+            // "Access-Control-Allow-Origin": '*',
+
         }
     }
 
@@ -29,11 +31,7 @@ export default class UserServices {
                 const response = await fetch(`${this.#domain}/auth/login`, {
                     method: "POST",
                     body: JSON.stringify(payload),
-                    headers: {
-                        "Content-type":
-                            "application/json;"
-                    },
-                    referrerPolicy: "strict-origin-when-cross-origin"
+                    headers: { "Content-type": "application/json" },
                 });
                 const json = await response.json();
                 resolve(json);
@@ -67,7 +65,7 @@ export default class UserServices {
                 });
                 const json = await response.json();
                 resolve(json);
-            } catch(error) {
+            } catch (error) {
                 reject(error);
             }
         });
@@ -128,8 +126,14 @@ export default class UserServices {
                     headers: this.headers(),
                     referrerPolicy: "strict-origin-when-cross-origin"
                 });
-                const json = await response.json();
-                resolve(json);
+
+                const json = await response.json();                
+                
+                if (json?.message) {
+                    reject(json);
+                } else {
+                    resolve(json);
+                }
             } catch (error) {
                 reject(error);
             }

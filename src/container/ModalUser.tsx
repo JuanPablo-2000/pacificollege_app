@@ -4,7 +4,7 @@ import {
   LabelType,
   ModalUserProps,
 } from "../interfaces/ModalUser";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import User from "../interfaces/User";
 import sweetAlert from "sweetalert";
 
@@ -61,7 +61,7 @@ export const ModalUser = ({
       IdBeneficiary: register?.cedula_beneficiario || "",
       Names: register?.nombres_b || "",
       LastNames: register?.apellidos_b || "",
-      Sex: register?.sexo_b || "",
+      Sex: register?.sexo_b?.toLowerCase() || "",
       Email: register?.correo_b || "",
       Age: register?.edad_b || "",
       BirthDate: register?.fecha_nacimiento_b || "",
@@ -77,6 +77,7 @@ export const ModalUser = ({
       GraduationDate: register?.fecha_graduando || "",
     },
   });
+
   const [labelForInput, setLabelForInput] = useState<any>({});
   const [sex, setSex] = useState("");
   const [state, setState] = useState("");
@@ -105,6 +106,8 @@ export const ModalUser = ({
     if (getValues().Sex) {
       setSex(getValues().Sex);
     }
+
+    console.log(register);
 
     if (showModal) {
       document.body.classList.add("active-modal");
@@ -137,13 +140,21 @@ export const ModalUser = ({
       variant: "outlined",
       error: true,
       size: "small",
-      helperText: "This field is required",
+      // helperText: "is required",
     };
   };
 
   const getCreateUser = async (body: User) => {
-    const data: any = await service.post(body);
-    return data.content;
+    try {
+      const data: any = await service.post(body);
+      return data;
+    } catch (error) {
+      sweetAlert({
+        title: "An error has ocurred",
+        text: "",
+        icon: "warning",
+      });
+    }
   };
 
   const getUpdateUser = async (id: number, body: User) => {
@@ -156,56 +167,56 @@ export const ModalUser = ({
     return data;
   };
 
-  const handleCreateUser = () => {
-    const dataForm = getValues();
-
-    const payload: User = {
-      id: dataForm.Id,
-      estado: dataForm.State,
-      cedula: dataForm.IdTitular,
-      codigo: dataForm.Code,
-      contrato: dataForm.Contract,
-      nombres_titular: dataForm.NameTitular.toUpperCase(),
-      apellidos_titular: dataForm.LastNameTitular.toUpperCase(),
-      correo: dataForm.EmailTitular.toUpperCase(),
-      direccion: dataForm.AddressTitular,
-      celular: dataForm.CellPhone,
-      plan: dataForm.Plan,
-      fecha_inicio: dataForm.DateStart,
-      fecha_final: dataForm.DateFinal,
-      total: dataForm.Total,
-      cuota_inicial: dataForm.DownPayment,
-      saldo: dataForm.Balance,
-      valor_cuota: dataForm.PaymentAmount,
-      fecha_pago: dataForm.PaymentDate,
-      cedula_beneficiario: dataForm.IdBeneficiary,
-      nombres_b: dataForm.Names.toUpperCase(),
-      apellidos_b: dataForm.LastNames.toUpperCase(),
-      sexo_b: dataForm.Sex.toUpperCase(),
-      correo_b: dataForm.Email.toUpperCase(),
-      edad_b: dataForm.Age,
-      fecha_nacimiento_b: dataForm.BirthDate,
-      direccion_b: dataForm.Address,
-      telefono_b: dataForm.Phone,
-      consultante_b: dataForm.Consultant,
-      actual_episodio_b: dataForm.CurrentEpisode,
-      ultimo_episodio_b: dataForm.LastEpisode,
-      tipo_estudiante: dataForm.TypeStudent,
-      induccion_b: dataForm.Induction,
-      congelamiento: dataForm.Frozen,
-      observaciones: dataForm.Observations.toUpperCase(),
-      fecha_graduando: dataForm.GraduationDate,
-    };
-
+  const handleCreateUser: SubmitHandler<ForModalUser> = async (dataForm: ForModalUser) => {    
     // Realizar la creacion de usuarios here.
     try {
+      const payload: User = {
+        id: dataForm.Id,
+        estado: dataForm.State,
+        cedula: dataForm.IdTitular,
+        codigo: dataForm.Code,
+        contrato: dataForm.Contract,
+        nombres_titular: dataForm.NameTitular.toUpperCase(),
+        apellidos_titular: dataForm.LastNameTitular.toUpperCase(),
+        correo: dataForm.EmailTitular.toUpperCase(),
+        direccion: dataForm.AddressTitular,
+        celular: dataForm.CellPhone,
+        plan: dataForm.Plan,
+        fecha_inicio: dataForm.DateStart,
+        fecha_final: dataForm.DateFinal,
+        total: dataForm.Total,
+        cuota_inicial: dataForm.DownPayment,
+        saldo: dataForm.Balance,
+        valor_cuota: dataForm.PaymentAmount,
+        fecha_pago: dataForm.PaymentDate,
+        cedula_beneficiario: dataForm.IdBeneficiary,
+        nombres_b: dataForm.Names.toUpperCase(),
+        apellidos_b: dataForm.LastNames.toUpperCase(),
+        sexo_b: dataForm.Sex.toUpperCase(),
+        correo_b: dataForm.Email.toUpperCase(),
+        edad_b: dataForm.Age,
+        fecha_nacimiento_b: dataForm.BirthDate,
+        direccion_b: dataForm.Address,
+        telefono_b: dataForm.Phone,
+        consultante_b: dataForm.Consultant,
+        actual_episodio_b: dataForm.CurrentEpisode,
+        ultimo_episodio_b: dataForm.LastEpisode,
+        tipo_estudiante: dataForm.TypeStudent,
+        induccion_b: dataForm.Induction,
+        congelamiento: dataForm.Frozen,
+        observaciones: dataForm.Observations.toUpperCase(),
+        fecha_graduando: dataForm.GraduationDate,
+      };
+
+      const response: any = await getCreateUser(payload);
+      refreshInfo(response, "create");
+      closeModal(!showModal);
+
       sweetAlert({
         title: "Has been successfully created",
         text: "",
         icon: "success",
       });
-      const response: any = getCreateUser(payload);
-      refreshInfo(response, "create");
     } catch (error) {
       sweetAlert({
         title: "An error has ocurred",
@@ -216,46 +227,46 @@ export const ModalUser = ({
   };
 
   const handleUpdateUser = async () => {
-    const dataForm = getValues();
-
-    const payload: User = {
-      estado: dataForm.State,
-      cedula: dataForm.IdTitular,
-      codigo: dataForm.Code,
-      contrato: dataForm.Contract,
-      nombres_titular: dataForm.NameTitular.toUpperCase(),
-      apellidos_titular: dataForm.LastNameTitular.toUpperCase(),
-      correo: dataForm.EmailTitular.toUpperCase(),
-      direccion: dataForm.AddressTitular.toUpperCase(),
-      celular: dataForm.CellPhone,
-      plan: dataForm.Plan,
-      fecha_inicio: dataForm.DateStart,
-      fecha_final: dataForm.DateFinal,
-      total: dataForm.Total,
-      cuota_inicial: dataForm.DownPayment,
-      saldo: dataForm.Balance,
-      valor_cuota: dataForm.PaymentAmount,
-      fecha_pago: dataForm.PaymentDate,
-      cedula_beneficiario: dataForm.IdBeneficiary,
-      nombres_b: dataForm.Names.toUpperCase(),
-      apellidos_b: dataForm.LastNames.toUpperCase(),
-      sexo_b: dataForm.Sex.toUpperCase(),
-      correo_b: dataForm.Email.toUpperCase(),
-      edad_b: dataForm.Age,
-      fecha_nacimiento_b: dataForm.BirthDate,
-      direccion_b: dataForm.Address.toUpperCase(),
-      telefono_b: dataForm.Phone,
-      consultante_b: dataForm.Consultant.toUpperCase(),
-      actual_episodio_b: dataForm.CurrentEpisode,
-      ultimo_episodio_b: dataForm.LastEpisode,
-      tipo_estudiante: dataForm.TypeStudent,
-      induccion_b: dataForm.Induction,
-      congelamiento: dataForm.Frozen,
-      observaciones: dataForm.Observations.toUpperCase(),
-      fecha_graduando: dataForm.GraduationDate,
-    };
-
     try {
+      const dataForm = getValues();
+
+      const payload: User = {
+        estado: dataForm.State,
+        cedula: dataForm.IdTitular,
+        codigo: dataForm.Code,
+        contrato: dataForm.Contract,
+        nombres_titular: dataForm.NameTitular.toUpperCase(),
+        apellidos_titular: dataForm.LastNameTitular.toUpperCase(),
+        correo: dataForm.EmailTitular.toUpperCase(),
+        direccion: dataForm.AddressTitular.toUpperCase(),
+        celular: dataForm.CellPhone,
+        plan: dataForm.Plan,
+        fecha_inicio: dataForm.DateStart,
+        fecha_final: dataForm.DateFinal,
+        total: dataForm.Total,
+        cuota_inicial: dataForm.DownPayment,
+        saldo: dataForm.Balance,
+        valor_cuota: dataForm.PaymentAmount,
+        fecha_pago: dataForm.PaymentDate,
+        cedula_beneficiario: dataForm.IdBeneficiary,
+        nombres_b: dataForm.Names.toUpperCase(),
+        apellidos_b: dataForm.LastNames.toUpperCase(),
+        sexo_b: dataForm.Sex.toUpperCase(),
+        correo_b: dataForm.Email.toUpperCase(),
+        edad_b: dataForm.Age,
+        fecha_nacimiento_b: dataForm.BirthDate,
+        direccion_b: dataForm.Address.toUpperCase(),
+        telefono_b: dataForm.Phone,
+        consultante_b: dataForm.Consultant.toUpperCase(),
+        actual_episodio_b: dataForm.CurrentEpisode,
+        ultimo_episodio_b: dataForm.LastEpisode,
+        tipo_estudiante: dataForm.TypeStudent,
+        induccion_b: dataForm.Induction,
+        congelamiento: dataForm.Frozen,
+        observaciones: dataForm.Observations.toUpperCase(),
+        fecha_graduando: dataForm.GraduationDate,
+      };
+
       sweetAlert({
         title: "Has been successfully updated",
         icon: "success",
@@ -273,15 +284,15 @@ export const ModalUser = ({
   };
 
   const handleDeleteUser = async () => {
-    const dataForm = getValues();
     try {
+      const dataForm = getValues();
+      await getDeleteUser(dataForm.Id);
+      const deleteUser: any = { id: dataForm?.Id };
+      refreshInfo(deleteUser, "delete");
       sweetAlert({
         title: "Has been successfully deleted",
         icon: "success",
       });
-      await getDeleteUser(dataForm.Id);
-      const deleteUser: any = { id: dataForm?.Id };
-      refreshInfo(deleteUser, "delete");
     } catch (error) {
       sweetAlert({
         title: "An error has ocurred",
@@ -291,7 +302,7 @@ export const ModalUser = ({
     closeModal(!showModal);
   };
 
-  useEffect(() => {
+  const validateFieldRequired = () => {
     let info = { ...labelForInput };
     let copy = { ...labelForInput };
 
@@ -312,11 +323,16 @@ export const ModalUser = ({
 
       setLabelForInput(info);
     }
-  }, [formState]);
+  };
+
+  useEffect(() => {validateFieldRequired()}, [formState.errors]);
 
   return (
     <form
       onSubmit={handleSubmit(handleOnSubmit(getValues()))}
+      onChange={(e) => {
+        // validateFieldRequired();
+      }}
       className="modal"
     >
       <div>
@@ -372,6 +388,7 @@ export const ModalUser = ({
                   />
                   <Controller
                     name={`Code`}
+                    rules={{ required: true }}
                     control={control}
                     render={({ field }) => (
                       <TextField
@@ -667,11 +684,11 @@ export const ModalUser = ({
                             {})}
                           labelId="demo-simple-select-label"
                           label="Sex*"
-                          value={sex}
-                          onChange={handleSelectedSexuality}
+                          // value={sex}
+                          // onChange={handleSelectedSexuality}
                         >
-                          <MenuItem value="Male">Male</MenuItem>
-                          <MenuItem value="Female">Female</MenuItem>
+                          <MenuItem value="male">Male</MenuItem>
+                          <MenuItem value="female">Female</MenuItem>
                         </Select>
                       </FormControl>
                     )}
@@ -827,8 +844,8 @@ export const ModalUser = ({
                           value={typeStudent}
                           onChange={handleSelectedTypeStudent}
                         >
-                          <MenuItem value="SPECIAL">SPECIAL</MenuItem>
-                          <MenuItem value="NO SPECIAL">NO SPECIAL</MenuItem>
+                          <MenuItem value="Special">SPECIAL</MenuItem>
+                          <MenuItem value="No Special">NO SPECIAL</MenuItem>
                         </Select>
                       </FormControl>
                     )}
@@ -922,7 +939,7 @@ export const ModalUser = ({
                 variant="contained"
                 color="success"
                 type="submit"
-                onClick={handleCreateUser}
+                onClick={handleSubmit(handleCreateUser)}
               >
                 Create
               </Button>
