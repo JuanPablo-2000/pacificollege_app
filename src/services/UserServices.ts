@@ -127,7 +127,7 @@ export default class UserServices {
                     referrerPolicy: "strict-origin-when-cross-origin"
                 });
 
-                const json = await response.json();                
+                const json = await response.json();
                 
                 if (json?.message) {
                     reject(json);
