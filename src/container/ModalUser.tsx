@@ -388,7 +388,6 @@ export const ModalUser = ({
                   />
                   <Controller
                     name={`Code`}
-                    rules={{ required: true }}
                     control={control}
                     render={({ field }) => (
                       <TextField
