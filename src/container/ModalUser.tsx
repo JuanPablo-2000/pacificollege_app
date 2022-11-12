@@ -167,7 +167,9 @@ export const ModalUser = ({
     return data;
   };
 
-  const handleCreateUser: SubmitHandler<ForModalUser> = async (dataForm: ForModalUser) => {    
+  const handleCreateUser: SubmitHandler<ForModalUser> = async (
+    dataForm: ForModalUser
+  ) => {
     // Realizar la creacion de usuarios here.
     try {
       const payload: User = {
@@ -226,7 +228,9 @@ export const ModalUser = ({
     }
   };
 
-  const handleUpdateUser: SubmitHandler<ForModalUser> = async (dataForm: ForModalUser) => {
+  const handleUpdateUser: SubmitHandler<ForModalUser> = async (
+    dataForm: ForModalUser
+  ) => {
     try {
       const dataForm = getValues();
 
@@ -325,7 +329,9 @@ export const ModalUser = ({
     }
   };
 
-  useEffect(() => {validateFieldRequired()}, [formState.errors]);
+  useEffect(() => {
+    validateFieldRequired();
+  }, [formState.errors]);
 
   return (
     <form
@@ -674,7 +680,7 @@ export const ModalUser = ({
                     rules={{ required: true }}
                     control={control}
                     render={({ field }) => (
-                      <FormControl>
+                      <FormControl className="select-custom">
                         <InputLabel id="sex"> Sex* </InputLabel>
                         <Select
                           {...field}
@@ -754,7 +760,7 @@ export const ModalUser = ({
                     name={`State`}
                     control={control}
                     render={({ field }) => (
-                      <FormControl>
+                      <FormControl className="select-custom">
                         <InputLabel id="state"> State </InputLabel>
                         <Select
                           {...field}
@@ -832,7 +838,10 @@ export const ModalUser = ({
                     rules={{ required: false }}
                     control={control}
                     render={({ field }) => (
-                      <FormControl sx={{ minWidth: 80 }}>
+                      <FormControl
+                        sx={{ minWidth: 80 }}
+                        className="select-custom"
+                      >
                         <InputLabel>TypeStudent</InputLabel>
                         <Select
                           {...field}
