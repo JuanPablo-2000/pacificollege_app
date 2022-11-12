@@ -226,7 +226,7 @@ export const ModalUser = ({
     }
   };
 
-  const handleUpdateUser = async () => {
+  const handleUpdateUser: SubmitHandler<ForModalUser> = async (dataForm: ForModalUser) => {
     try {
       const dataForm = getValues();
 
@@ -948,7 +948,7 @@ export const ModalUser = ({
                   className="update-button"
                   variant="contained"
                   type="submit"
-                  onClick={handleUpdateUser}
+                  onClick={handleSubmit(handleUpdateUser)}
                 >
                   Update
                 </Button>

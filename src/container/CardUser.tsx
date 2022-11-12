@@ -16,7 +16,7 @@ const CardUser = ({ clickHandler, data }: CardUserProps) => {
         <p>{data.contrato}</p>
         <p>{data.actual_episodio}</p>
         <p>{data.ultimo_episodio}</p>
-        <p>{data.celular}</p>
+        <p>{data.telefono_b}</p>
         <p>{data.correo}</p>
       </div>
     </div>
