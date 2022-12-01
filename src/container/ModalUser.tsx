@@ -100,6 +100,7 @@ export const ModalUser = ({
     if (getValues().State) {
       setState(getValues().State);
     }
+    // console.log("TypeStudent", getValues().TypeStudent);
     if (getValues().TypeStudent) {
       setTypeStudent(getValues().TypeStudent);
     }
@@ -107,7 +108,7 @@ export const ModalUser = ({
       setSex(getValues().Sex);
     }
 
-    console.log(register);
+    // console.log(register);
 
     if (showModal) {
       document.body.classList.add("active-modal");
@@ -201,9 +202,9 @@ export const ModalUser = ({
         direccion_b: dataForm.Address,
         telefono_b: dataForm.Phone,
         consultante_b: dataForm.Consultant,
-        actual_episodio_b: dataForm.CurrentEpisode,
+        actual_episodio: dataForm.CurrentEpisode,
         ultimo_episodio_b: dataForm.LastEpisode,
-        tipo_estudiante: dataForm.TypeStudent,
+        tipoEstudiante: dataForm.TypeStudent,
         induccion_b: dataForm.Induction,
         congelamiento: dataForm.Frozen,
         observaciones: dataForm.Observations.toUpperCase(),
@@ -232,7 +233,7 @@ export const ModalUser = ({
     dataForm: ForModalUser
   ) => {
     try {
-      const dataForm = getValues();
+      
 
       const payload: User = {
         estado: dataForm.State,
@@ -262,14 +263,16 @@ export const ModalUser = ({
         direccion_b: dataForm.Address.toUpperCase(),
         telefono_b: dataForm.Phone,
         consultante_b: dataForm.Consultant.toUpperCase(),
-        actual_episodio_b: dataForm.CurrentEpisode,
+        actual_episodio: dataForm.CurrentEpisode,
         ultimo_episodio_b: dataForm.LastEpisode,
-        tipo_estudiante: dataForm.TypeStudent,
+        tipoEstudiante: dataForm.TypeStudent,
         induccion_b: dataForm.Induction,
         congelamiento: dataForm.Frozen,
         observaciones: dataForm.Observations.toUpperCase(),
         fecha_graduando: dataForm.GraduationDate,
       };
+
+      console.log(dataForm);
 
       sweetAlert({
         title: "Has been successfully updated",
@@ -769,8 +772,8 @@ export const ModalUser = ({
                             {})}
                           labelId="demo-simple-select-label"
                           label="State"
-                          value={state}
-                          onChange={handleSelectedState}
+                          // value={state}
+                          // onChange={handleSelectedState}
                         >
                           <MenuItem value="ACTIVO">ACTIVO</MenuItem>
                           <MenuItem value="CADUCADO">CADUCADO</MenuItem>
@@ -835,25 +838,25 @@ export const ModalUser = ({
                   />
                   <Controller
                     name={`TypeStudent`}
-                    rules={{ required: false }}
                     control={control}
                     render={({ field }) => (
                       <FormControl
                         sx={{ minWidth: 80 }}
                         className="select-custom"
                       >
-                        <InputLabel>TypeStudent</InputLabel>
+                        <InputLabel id="typeStudent">TypeStudent</InputLabel>
                         <Select
                           {...field}
                           {...((`TypeStudent` in labelForInput &&
                             labelForInput[`TypeStudent`]) ||
                             {})}
+                          labelId="demo-simple-select-label"
                           label="TypeStudent"
-                          value={typeStudent}
-                          onChange={handleSelectedTypeStudent}
+                          // value={typeStudent}
+                          // onChange={handleSelectedTypeStudent}
                         >
-                          <MenuItem value="Special">SPECIAL</MenuItem>
-                          <MenuItem value="No Special">NO SPECIAL</MenuItem>
+                          <MenuItem value="SPECIAL">SPECIAL</MenuItem>
+                          <MenuItem value="NOSPECIAL">NO SPECIAL</MenuItem>
                         </Select>
                       </FormControl>
                     )}

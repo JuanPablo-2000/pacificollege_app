@@ -93,6 +93,7 @@ const ListUsers = () => {
   const handleSelectUser = (selected: any) => {
     setSelectUser(selected.id);
     setUserSelected(selected);
+    console.log(selected);
     triggerModal();
   };
 

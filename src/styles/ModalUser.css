@@ -121,9 +121,6 @@ body .active-modal {
     transform:scale(1.1);
 }
 .update-button {
-    /* position: relative;
-    bottom: 6.5em;
-    right: 40em; */
     background: #063A47 !important;
     width: 7rem;
 }
