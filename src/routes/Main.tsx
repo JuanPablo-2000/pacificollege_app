@@ -19,13 +19,14 @@ const Main = () => {
   useEffect(() => {
     let userCurrent: any = localStorage.getItem("user_token");
 
-    if (userCurrent) {
+    if (userCurrent && userCurrent != "undefined") {
       userCurrent = JSON.parse(userCurrent);
       setUser(userCurrent);
 
       // navigate("/listUsers");
     } else {
       // navigate("/login");
+      localStorage.removeItem("user_token");
     }
 
     setMounted(true);

@@ -22,11 +22,13 @@ const Login = () => {
 
   useEffect(() => {
     const user = localStorage.getItem("user_token");
-    if (user) {
+    if (user && user != "undefined") {
       const userFormat = JSON.parse(user);
       if (userFormat) {
         navigate("/listUsers");
       }
+    } else {
+      localStorage.removeItem("user_token");
     }
   }, []);
 

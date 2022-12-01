@@ -12,9 +12,11 @@ export default class UserServices {
         const user = localStorage.getItem("user_token");
         let token = "";
 
-        if (user) {
+        if (user && user != "undefined") {
             const userFormat = JSON.parse(user);
             token = userFormat
+        } else {
+            localStorage.removeItem("user_token")
         }
 
         return {
