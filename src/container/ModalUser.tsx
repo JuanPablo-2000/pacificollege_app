@@ -100,7 +100,7 @@ export const ModalUser = ({
     if (getValues().State) {
       setState(getValues().State);
     }
-    // console.log("TypeStudent", getValues().TypeStudent);
+    console.log("TypeStudent", register);
     if (getValues().TypeStudent) {
       setTypeStudent(getValues().TypeStudent);
     }
@@ -203,7 +203,7 @@ export const ModalUser = ({
         telefono_b: dataForm.Phone,
         consultante_b: dataForm.Consultant,
         actual_episodio: dataForm.CurrentEpisode,
-        ultimo_episodio_b: dataForm.LastEpisode,
+        ultimo_episodio: dataForm.LastEpisode,
         tipoEstudiante: dataForm.TypeStudent,
         induccion_b: dataForm.Induction,
         congelamiento: dataForm.Frozen,
@@ -264,7 +264,7 @@ export const ModalUser = ({
         telefono_b: dataForm.Phone,
         consultante_b: dataForm.Consultant.toUpperCase(),
         actual_episodio: dataForm.CurrentEpisode,
-        ultimo_episodio_b: dataForm.LastEpisode,
+        ultimo_episodio: dataForm.LastEpisode,
         tipoEstudiante: dataForm.TypeStudent,
         induccion_b: dataForm.Induction,
         congelamiento: dataForm.Frozen,

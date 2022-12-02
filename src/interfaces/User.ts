@@ -28,7 +28,7 @@ export default interface User {
 	telefono_b: string,
 	consultante_b?: string,
 	actual_episodio?: string,
-	ultimo_episodio_b?: Date,
+	ultimo_episodio?: Date,
 	tipoEstudiante?: String,
 	induccion_b?: Date,
 	congelamiento?: Date,
